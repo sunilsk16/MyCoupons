@@ -1,0 +1,47 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Role List</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content class="ion-padding">
+  
+    <ion-grid>
+      <ion-row>
+        <ion-col>User UID</ion-col>
+          <ion-col>Name</ion-col>
+          <ion-col>Permissions</ion-col>
+          <ion-col>Created By</ion-col>
+          <ion-col>Edit</ion-col>
+          <ion-col>Delete</ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let role of roleList; let i = index">
+        <ion-col>{{ role.roleValue }}</ion-col>
+        <ion-col>{{ role.roleName }}</ion-col>
+        <ion-col>{{ role.permissions.length }}</ion-col>
+        <ion-col>{{ role.created_by ? role.created_by.name : 'Admin' }}</ion-col>
+        <ion-col>{{ role.created_on }}</ion-col>
+        <ion-col>
+          <ion-button  class="btn btn-sm btn-outline-info">
+            Edit
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button disabled  class="btn btn-sm btn-outline-danger">
+            <!-- <i class="fa fa-refresh fa-spin" *ngIf="isLoading"></i> -->
+            Delete
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ion-content>

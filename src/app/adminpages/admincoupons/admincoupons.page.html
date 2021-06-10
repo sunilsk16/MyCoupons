@@ -1,0 +1,69 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+        <ion-title>Create Coupons</ion-title>
+    </ion-toolbar>
+  </ion-header>,
+  <ion-content fullscreen>
+
+    <form [formGroup]="registerForm" (ngSubmit)="createCoupons(registerForm.value)">
+      <ion-card>
+
+        <ion-card-header>
+          <ion-card-subtitle style="font-size: 20px;text-align: left;">Create Coupons</ion-card-subtitle>
+          <ion-card-title></ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+
+          <ion-grid>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="10" size-lg="10" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Coupon ID</ion-label>
+                  <ion-input name="couponId" readonly formControlName="couponId" type="firstName"  placeholder="Prefix" ngModel required></ion-input>
+                </ion-item>
+                  <ion-item>
+           <ion-label>Catgory</ion-label>
+                      <ion-select  formControlName="catgory">
+             <ion-select-option value="lunch">Lunch</ion-select-option>
+             <ion-select-option value="dinner">Dinner</ion-select-option>
+             <ion-select-option value="drinks">Dirnks</ion-select-option>
+           </ion-select>
+         </ion-item>
+         <ion-item>
+         <ion-label>Plans</ion-label>
+         <ion-select  formControlName="plans">
+           <ion-select-option value="planA">PlanA</ion-select-option>
+           <ion-select-option value="planB">PlanB</ion-select-option>
+           <ion-select-option value="planC">PlanC</ion-select-option>
+         </ion-select>
+       </ion-item>
+       <ion-item>
+         <ion-label position="floating">Prefix</ion-label>
+         <ion-input name="prefix" formControlName="prefix" type="firstName" placeholder="Prefix" ngModel required></ion-input>
+
+       </ion-item>
+       <ion-item>
+         <ion-label position="floating">Description</ion-label>
+         <ion-input name="description" formControlName="description" type="firstName" placeholder="Description" ngModel required></ion-input>
+
+       </ion-item>
+ <ion-input placeholder="Enter Input" [(ngModel)]="encodedData"></ion-input>
+
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+
+
+        </ion-card-content>
+      </ion-card>
+      <div padding style="margin-top: 20px;text-align: center;">
+        <ion-button type="submit" [disabled]="registerForm.invalid" >Create Coupon</ion-button>
+      </div>
+
+    </form>
+
+  </ion-content>
+</ion-app>

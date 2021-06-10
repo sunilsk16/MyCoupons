@@ -1,0 +1,32 @@
+
+ion-icon {
+  color: blue;
+  font-size: 64px;
+}
+ion-row{
+  margin-top: 12px;
+}
+ion-label{
+  margin-right: 31px;
+      font-size: 20px;
+}
+h5{
+  color: black;
+      font-size: 18px;
+      font-weight: 700;
+}
+ion-col > div {
+  background-color: white;
+  /* border: solid 1px #ddd; */
+  padding: -2px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family:  system-ui;
+  text-align: center;
+   }
+
+ion-toolbar{
+    font-family:  system-ui;
+    font-size: 18px;
+    font-weight: 600;
+}

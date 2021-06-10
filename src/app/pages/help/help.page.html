@@ -1,0 +1,36 @@
+<ion-app>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Help
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding>
+
+
+
+
+  <ion-card *ngFor="let d of diseases; let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+<ion-grid>
+  <ion-row>
+    <ion-col>
+    <h5>
+      {{d.title}}
+      <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-up' : 'arrow-down'"></ion-icon>
+    </h5>
+    </ion-col>
+      </ion-row>
+        <ion-row>
+          <ion-col>
+          <div *ngIf="isGroupShown(i)">{{d.description}}</div>
+          </ion-col>
+            </ion-row>
+              </ion-grid>
+    </ion-card>
+
+</ion-content>

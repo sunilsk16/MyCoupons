@@ -1,0 +1,80 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <!-- <ion-buttons style="color: white;" slot="start">
+     <ion-button [routerLink]="['/welcome']"color="primary">
+       <ion-icon slot="icon-only" name="arrow-back" [routerLink]="['/welcome']"  style="color:white;"></ion-icon>
+     </ion-button>
+     </ion-buttons> -->
+      <ion-title>SingUp</ion-title>
+    </ion-toolbar>
+  </ion-header>,
+  <ion-content fullscreen>
+
+    <ion-grid style="margin-top: 15px;text-align: center;">
+      <ion-row>
+
+        <ion-col>
+
+          <img src="assets\img\new_logo.png">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <form [formGroup]="registerForm" (ngSubmit)="tryRegister(registerForm.value)">
+      <ion-card>
+
+        <ion-card-header>
+          <ion-card-subtitle style="font-size: 20px;text-align: left;">SignUp</ion-card-subtitle>
+          <ion-card-title></ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+
+          <ion-grid>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div text-center>
+                </div>
+                <div padding>
+
+                  <ion-item>
+                    <ion-label position="floating">First Name</ion-label>
+                    <ion-input name="firstName" formControlName="firstName" type="firstName" placeholder="First Name" ngModel required></ion-input>
+
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Phone Number</ion-label>
+                    <ion-input name="phoneNumber" formControlName="phoneNumber" type="PhoneNumber" placeholder="Phone Number" ngModel required></ion-input>
+
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Email ID</ion-label>
+                    <ion-input name="email" type="email" formControlName="email" placeholder="your@email.com" ngModel required></ion-input>
+
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input name="password" type="password" formControlName="password" placeholder="Password" ngModel required></ion-input>
+                  </ion-item>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+
+
+        </ion-card-content>
+      </ion-card>
+      <div padding style="margin-top: 20px;text-align: center;">
+        <ion-button type="submit" [disabled]="registerForm.invalid">SignUp</ion-button>
+      </div>
+
+    </form>
+
+
+    <div style="margin-top: 40px;text-align: center;">
+      Already Have Account <a routerLink='/login'>
+        Sign In</a>
+    </div>
+  </ion-content>
+</ion-app>

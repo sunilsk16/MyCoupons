@@ -1,0 +1,59 @@
+h5
+{
+  color:  red;
+      font-size: 12px;
+      font-weight: 700;
+}
+h6
+{
+color: steelblue;
+      font-size: 10px;
+      font-weight: 600;
+}
+
+ion-row{
+  margin-top: -10px;
+  // text-align: center;
+}
+
+ion-col{
+  color: gray;
+
+}
+
+ion-card{
+background: bottom;
+box-shadow: 0px 0px 5px 2px darkgrey;
+  color: black;
+  opacity: 1px;
+
+  }
+h4
+{
+  font-variant-caps: all-small-caps;
+  color: black;
+      font-weight: 800;
+    font-size: 18px;
+
+}
+h3
+{
+  font-variant-caps: all-small-caps;
+    color: blue;
+    font-weight: 800;
+    font-size: 22px;
+
+}
+ion-toolbar{
+    font-family:  system-ui;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+ion-label{
+  color: black;
+}
+// ion-button{
+//   --background: yellowgreen;
+//
+// }

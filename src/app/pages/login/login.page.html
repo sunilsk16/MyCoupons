@@ -1,0 +1,70 @@
+<ion-app >
+    <ion-header >
+    <ion-toolbar >
+      <!-- <ion-buttons style="color: white;" slot="start">
+     <ion-button [routerLink]="['/welcome']"color="primary">
+       <ion-icon slot="icon-only" name="arrow-back" [routerLink]="['/welcome']"  style="color:white;"></ion-icon>
+     </ion-button>
+     </ion-buttons> -->
+      <ion-title>SingIn</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content fullscreen>
+
+    <ion-grid style= "margin-top: 35px;text-align: center;">
+  <ion-row>
+
+    <ion-col>
+
+        <img src="assets\img\new_logo.png">
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+  <form [formGroup]="loginForm" >
+            <ion-card >
+
+      <ion-card-header>
+        <ion-card-subtitle style="font-size: 20px;text-align: left;">SignIn</ion-card-subtitle>
+        <ion-card-title></ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+          <ion-grid >
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div text-center>
+                </div>
+                <div padding>
+                  <ion-item  style="margin-bottom: 15px;">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <ion-input name="email" formControlName="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+                  </ion-item>
+                  <ion-item >
+                      <ion-icon name="key-outline"></ion-icon>
+                    <ion-input name="password" type="password" formControlName="password" placeholder="Password" ngModel required></ion-input>
+                  <ion-icon name="eye-outline"> </ion-icon>
+                  </ion-item>
+                </div>
+              </ion-col>
+            </ion-row>
+                    </ion-grid>
+
+        <div style="margin-top: 30px;text-align: right;">
+          <a routerLink='/register'>
+            Forgot Password.?</a>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <div padding style="margin-top: 40px;text-align: center;">
+      <ion-button type="submit" [disabled]="loginForm.invalid" *ngIf="!isActiveLogin" (click)="signIn()" >Signin</ion-button>
+        <ion-button type="submit" [disabled]="loginForm.invalid" *ngIf="isActiveLogin" (click)="doForceLogin()" >ForceSignIn</ion-button>
+    </div>
+  </form>
+    <div style="margin-top: 40px;text-align: center;" >
+      New User, please <a routerLink='/register'>
+        Sign Up</a>
+    </div>
+  </ion-content>
+
+</ion-app>

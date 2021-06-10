@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "coupons-e6535": {
+      "hosting": {
+        "app": [
+          "coupons-e6535"
+        ]
+      }
+    }
+  }
+}

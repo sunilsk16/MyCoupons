@@ -1,0 +1,41 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Create Role</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+<h5> Create role </h5>
+<ion-item >
+  <ion-label position="fixed">Role Name :</ion-label>
+  <ion-input placeholder="Enter role name here .." [(ngModel)]="roleName" name="roleName"></ion-input> <ion-button expand="block" (click)="createRole()">Save</ion-button>
+</ion-item>
+<ion-card *ngFor="let page of allPages; let index = index">
+<ion-list lines="full" >
+  <ion-item>
+    <ion-label><strong>{{ page.title }}</strong></ion-label>
+    <ion-checkbox slot="start"
+    [(ngModel)]="page.isAllChecked"  (ionChange)="checkAllPermission(page)" id="{{ page.title }}" value="{{ page.title }}"  ></ion-checkbox>
+  </ion-item>
+</ion-list>
+
+<ion-list *ngFor="let permission of page.permissions; let j = index">
+  <ion-item>
+    <ion-label>{{ permission.name }}</ion-label>
+    <ion-checkbox slot="start"  [(ngModel)]="permission.isChecked"  id="{{permission.value}}" value="{{permission.name}}" >
+    </ion-checkbox>
+  </ion-item>
+</ion-list>
+</ion-card>
+</ion-card>
+
+</ion-content>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -8,9 +9,97 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'welcome',
+    loadChildren: () => import('./pages/welcome/welcome.module').then( m => m.WelcomePageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'coupons',
+    loadChildren: () => import('./pages/coupons/coupons.module').then( m => m.CouponsPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'refer',
+    loadChildren: () => import('./pages/refer/refer.module').then( m => m.ReferPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'rewards',
+    loadChildren: () => import('./pages/rewards/rewards.module').then( m => m.RewardsPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'deals',
+    loadChildren: () => import('./pages/deals/deals.module').then( m => m.DealsPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'payments',
+    loadChildren: () => import('./pages/payments/payments.module').then( m => m.PaymentsPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'terms',
+    loadChildren: () => import('./pages/terms/terms.module').then( m => m.TermsPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'help',
+    loadChildren: () => import('./pages/help/help.module').then( m => m.HelpPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'contact',
+    loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile-edit',
+    loadChildren: () => import('./pages/profile-edit/profile-edit.module').then( m => m.ProfileEditPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'admincoupons',
+    loadChildren: () => import('./adminpages/admincoupons/admincoupons.module').then( m => m.AdmincouponsPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'create-role',
+    loadChildren: () => import('./adminpages/role-management/create-role/create-role.module').then( m => m.CreateRolePageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'role-list',
+    loadChildren: () => import('./adminpages/role-management/role-list/role-list.module').then( m => m.RoleListPageModule)
+    , canActivate: [AuthGuard]
+  },
+
 ];
 
 @NgModule({

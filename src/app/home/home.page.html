@@ -1,20 +1,65 @@
+<ion-app>
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+     <ion-menu-button></ion-menu-button>
+     </ion-buttons>
     <ion-title>
-      Blank
+
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content fullscreen class="ion-padding" scroll-y="true">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-slides [options]="slideOptsOne">
+
+    <ion-slide>
+      <div class="slide">
+          <h3> CAFE DE LUXURIA</h3>
+        <ion-card>
+
+        <img src="assets/img/hotel1.jpg"/>
+        </ion-card>
+        <h2>WELCOME TO DENISSONS</h2>
+        <p>  Luxury is a notch higher here. <b> The sheer vast expanse heightens the feeling of lavish charm.</b>  Indulge your senses to the state of art in room facilities earmarked to make you feel special.
+</p>
+      </div>
+    </ion-slide>
+
+
+    <ion-slide>
+        <h3>THE COAST</h3>
+      <ion-card>
+
+      <img src="assets/img/hotel2.jpg"/>
+      </ion-card>
+      <h2>One membership ,</h2><span> many benefits</span>
+      <p>Your<b>prime membership now </b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
+    </ion-slide>
+    <ion-slide>
+        <h3> ONYX LOUNGE BAR</h3>
+      <ion-card>
+              <img src="assets/img/deni2.jpg"/>
+      </ion-card>
+      <h2>One membership ,many benefits</h2>
+      <p>Your<b>prime membership now </b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
+    </ion-slide>
+
+      <ion-slide>
+          <h3>SATWIK</h3>
+      <ion-card>
+        <img src="assets/img/deni4.jpg"/>
+      </ion-card>
+      <h2>Ready to Play?</h2>
+      <!-- <ion-button fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button> -->
+    </ion-slide>
+      </ion-slides>
+<ion-card>
+<ion-button expand="block">Join Prime membership</ion-button>
+  <p>One membership ,Many benefits</p>
+</ion-card>
+
 </ion-content>
+
+</ion-app>

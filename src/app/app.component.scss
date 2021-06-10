@@ -1,0 +1,17 @@
+ion-menu {
+  --ion-background: #dad2d259;
+  --ion-text-color: black;
+
+
+  ion-toolbar {
+    --background: var(--ion-color-p);
+  }
+
+  ion-list {/* optional, but it needs when you use gradient as a background color.*/
+    background: transparent;
+  }
+}
+
+ion-label{
+    font-family:  system-ui;
+}

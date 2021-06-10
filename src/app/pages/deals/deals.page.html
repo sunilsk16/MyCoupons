@@ -1,0 +1,115 @@
+<ion-app>
+  <ion-header translucent>
+    <ion-toolbar>
+      <ion-title>Deals</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <!-- <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
+    </ion-toolbar>
+  </ion-header>
+
+
+
+
+  <ion-content class="ion-padding">
+    <ion-segment  [(ngModel)]="type">
+      <ion-segment-button value="available">
+        <ion-label>Deals For You</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="used">
+        <ion-label>My Deals  </ion-label>
+      </ion-segment-button>
+      </ion-segment>
+    <ion-list >
+      <ion-item lines="none">
+              <ion-select value="all" okText="Okay" cancelText="Dismiss">
+          <ion-select-option value="all">All</ion-select-option>
+            <ion-select-option value="blonde">Starter/Soup Offer</ion-select-option>
+          <ion-select-option value="blonde">Main Course Offer</ion-select-option>
+          <ion-select-option value="black">Dessert/Moctails Offer</ion-select-option>
+          <ion-select-option value="red">Pizza/pasta Offer</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+
+    <div [ngSwitch]="type">
+      <ion-card  *ngSwitchCase="'available'">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h6> PLAN - B </h6>
+                <h4>  Main Course Offer </h4>
+            </ion-col>
+            <ion-col>
+              <h6> Dinner (7:30 PM to 11:00 PM) </h6>
+              <h3>BUY 1 GET 1</h3>
+            </ion-col>
+
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Pay for One Main Course and Get One Main Course Of the same or lesser value Of your choice
+            </ion-col>
+          </ion-row>
+          <ion-row>
+                    </ion-row>
+          <ion-row>
+            <ion-col>
+              <h5> Expires On: Feb 2 ,2021 </h5>
+            </ion-col>
+            <ion-col>
+          <h6>T & C Applicable </h6>
+            </ion-col>
+
+          </ion-row>
+
+        </ion-grid>
+        <ion-button   style="margin-top: -15px;" expand="block"  (click)="dealsView()">
+          BUY NOW
+        </ion-button>
+      </ion-card>
+      <ion-card  *ngSwitchCase="'used'" style="background:lightgray">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h6> PLAN - B </h6>
+                <h4>  Main Course Offer </h4>
+            </ion-col>
+            <ion-col>
+              <h6> Dinner (7:30 PM to 11:00 PM) </h6>
+              <h3>BUY 1 GET 1</h3>
+            </ion-col>
+
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Pay for One Main Course and Get One Main Course Of the same or lesser value Of your choice
+            </ion-col>
+          </ion-row>
+          <ion-row>
+                    </ion-row>
+          <ion-row>
+            <ion-col>
+              <h5> Used On: Feb 2 ,2021 </h5>
+            </ion-col>
+            <ion-col>
+          <h6>T & C Applicable </h6>
+            </ion-col>
+
+          </ion-row>
+
+        </ion-grid>
+        <ion-button  style="margin-top: -15px;" expand="block" (click)="buyDealsView()">
+        USE NOW
+        </ion-button>
+      </ion-card>
+
+    </div>
+  </ion-content>
+</ion-app>
