@@ -22,8 +22,8 @@
     "@angular/pwa": "^12.0.1",
     "@angular/router": "~11.2.0",
     "@angular/service-worker": "~11.2.0",
-    "@capacitor/cli": "^3.0.0-rc.4",
-    "@capacitor/core": "^3.0.0-rc.4",
+    "@capacitor/android": "^3.0.1",
+    "@capacitor/core": "3.0.1",
     "@ionic-native/barcode-scanner": "^5.33.1",
     "@ionic-native/core": "^5.33.1",
     "@ionic/angular": "^5.5.2",
@@ -50,7 +50,9 @@
     "@angular/compiler": "~11.2.0",
     "@angular/compiler-cli": "~11.2.0",
     "@angular/language-service": "~11.2.0",
+    "@capacitor/cli": "3.0.1",
     "@ionic/angular-toolkit": "^3.1.1",
+    "@ionic/app-scripts": "^3.2.4",
     "@types/datatables.net": "^1.10.18",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
@@ -58,7 +60,6 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
-    "cordova-android": "^9.1.0",
     "cordova-browser": "^6.0.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
@@ -103,7 +104,6 @@
       "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
-      "android",
       "browser"
     ]
   }
