@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../../_services/auth.service';
 import { UserService } from '../../_services/user/user.service';
-import { CouponService } from '../../_services/coupons/coupon.service';
+import { RewardsService } from '../../_services/rewards/rewards.service';
 import { Platform, MenuController } from '@ionic/angular';
 import { AlertService } from '../../_services/alert.service';
 import {
@@ -11,14 +11,12 @@ import {
   BarcodeScanner
 } from "@ionic-native/barcode-scanner/ngx";
 
-
-
 @Component({
-  selector: 'app-admincoupons',
-  templateUrl: './admincoupons.page.html',
-  styleUrls: ['./admincoupons.page.scss'],
+  selector: 'app-admin-rewards',
+  templateUrl: './admin-rewards.page.html',
+  styleUrls: ['./admin-rewards.page.scss'],
 })
-export class AdmincouponsPage implements OnInit {
+export class AdminRewardsPage implements OnInit {
 
   registerForm: FormGroup;
   loading = false;
@@ -30,7 +28,7 @@ export class AdmincouponsPage implements OnInit {
   isEdit: any = false;
   roleData: any;
   loggedInUser: any;
-  couponId: any;
+  rewardId: any;
   encodeData: any;
   scannedData: {};
   barcodeScannerOptions: BarcodeScannerOptions;
@@ -56,7 +54,7 @@ export class AdmincouponsPage implements OnInit {
     private router: Router,
     private authService: AuthService,
     private userService: UserService,
-    private couponService: CouponService,
+    private rewardsService: RewardsService,
     private platform: Platform,
     private alertService: AlertService,
     public menu: MenuController) {
@@ -78,17 +76,17 @@ export class AdmincouponsPage implements OnInit {
       description: ['', Validators.required],
       plans: ['', Validators.required],
       catgory: ['', Validators.required],
-      couponId: ['', Validators.required],
+      rewardId: ['', Validators.required],
     });
 
 
-    this.couponService.getCouponsGenerateAutoId()
+    this.rewardsService.getRewardsGenerateAutoId()
       .then((autoId: any) => {
-        let couponId = 'COUP' + autoId;
-        console.log('couponId ', couponId);
-        this.couponId = couponId;
+        let rewardId = 'COUP' + autoId;
+        console.log('rewardId ', rewardId);
+        this.rewardId = rewardId;
         this.registerForm.patchValue({
-          couponId: couponId
+          rewardId: rewardId
         })
       })
 
@@ -104,27 +102,27 @@ export class AdmincouponsPage implements OnInit {
     this.createdCode = this.qrCode;
   }
 
-  createCoupons(value) {
+  createRewards(value) {
     // this.createCode();
-    let coupon: any = {};
+    let reward: any = {};
     if (this.isEdit) {
-      coupon.updated_by = this.loggedInUser;
-      coupon.prefix = this.registerForm.value.prefix;
-      coupon.description = this.registerForm.value.description;
-      coupon.plans = this.registerForm.value.plans;
-      coupon.catgory = this.registerForm.value.catgory;
-      coupon.couponId = this.registerForm.value.couponId;
+      reward.updated_by = this.loggedInUser;
+      reward.prefix = this.registerForm.value.prefix;
+      reward.description = this.registerForm.value.description;
+      reward.plans = this.registerForm.value.plans;
+      reward.catgory = this.registerForm.value.catgory;
+      reward.rewardId = this.registerForm.value.rewardId;
 
       // role.updated_on = moment().format('DD-MM-YYYY hh:mm A');
       // role.timeStamp = moment().format('x');
     } else {
-      coupon = {
+      reward = {
         created_by: this.loggedInUser,
         prefix: this.registerForm.value.prefix,
         description: this.registerForm.value.description,
         plans: this.registerForm.value.plans,
         catgory: this.registerForm.value.catgory,
-        couponId: this.registerForm.value.couponId,
+        rewardId: this.registerForm.value.rewardId,
         time: this.lunchtime,
         plantype: this.planType,
         // created_on: moment().format('DD-MM-YYYY hh:mm A'),
@@ -132,9 +130,9 @@ export class AdmincouponsPage implements OnInit {
         // timeStamp: moment().format('x')
       }
     }
-    console.log(coupon);
+    console.log(reward);
     // this.helper.showLoading();
-    this.couponService.createCoupons(coupon)
+    this.rewardsService.createRewards(reward)
       .then(() => {
         return this.refreshPages();
       })
@@ -142,11 +140,10 @@ export class AdmincouponsPage implements OnInit {
         // this.helper.hideLoading();
         let msg = this.isEdit ? 'Updated' : 'Created'
         this.alertService.showToast(' successfully');
-        this.roleName = ''
-      })
+            })
       .catch((err: any) => {
         // this.helper.hideLoading();
-        this.alertService.showToast('Error creating Coupons');
+        this.alertService.showToast('Error creating Deals');
         console.log(err);
       })
   }

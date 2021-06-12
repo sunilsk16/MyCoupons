@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { MycouponsComponent } from '../../mycoupons/mycoupons.component';
+import {
+  BarcodeScannerOptions,
+  BarcodeScanner
+} from "@ionic-native/barcode-scanner/ngx";
+import { CouponService } from '../../_services/coupons/coupon.service';
 
 @Component({
   selector: 'app-coupons',
@@ -10,11 +15,30 @@ import { MycouponsComponent } from '../../mycoupons/mycoupons.component';
 })
 export class CouponsPage implements OnInit {
  type: any;
+ loggedInUser: any;
+ couponsList:any;
+ barcodeScannerOptions: BarcodeScannerOptions;
+  @Input() value: any;
+
   constructor(public popoverCtrl: PopoverController,
-   public modalCtrl: ModalController,) { }
+   public modalCtrl: ModalController,
+   private barcodeScanner: BarcodeScanner,
+ private couponService: CouponService,) {
+   this.barcodeScannerOptions = {
+     showTorchButton: true,
+     showFlipCameraButton: true
+   };
+       if (window.localStorage.getItem('currentUser')) {
+         this.loggedInUser = JSON.parse(window.localStorage.getItem('currentUser'));
+       }}
 
   ngOnInit() {
-    this.type = 'available';
+        this.type = 'available';
+        this.couponService.getAllCoupons()
+        .then((res:any) =>{
+          this.couponsList = res;
+          console.log('couponsList ', res);
+          })
     }
     dismiss() {
     this.modalCtrl.dismiss();
@@ -30,9 +54,9 @@ export class CouponsPage implements OnInit {
   //      const { role } = await popover.onDidDismiss();
   // }
   async couponsView() {
-      const modal = await this.modalCtrl.create({
+      let modal = await this.modalCtrl.create({
         component: MycouponsComponent,
-        animated: true,
+          animated: true,
         mode: 'ios',
         backdropDismiss: false,
         cssClass: 'login-modal',

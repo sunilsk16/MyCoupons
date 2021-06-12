@@ -8,9 +8,10 @@ import firebase from 'firebase/app';
 @Injectable({
   providedIn: 'root'
 })
-export class CouponService {
+export class DealsService {
+
   ref = firebase.firestore().collection('users');
-  private couponCollection: any;
+  private dealsCollection: any;
   constructor(
     private firestore: AngularFirestore,
     public afs: AngularFirestore,
@@ -18,7 +19,7 @@ export class CouponService {
     private storage: AngularFireStorage
   )
   {
-    this.couponCollection = this.afs.collection<any>('coupons', ref => ref.orderBy('created_on'));
+    this.dealsCollection = this.afs.collection<any>('deals', ref => ref.orderBy('created_on'));
   }
 
   generateUniqNumber(length?: any) {
@@ -31,22 +32,22 @@ export class CouponService {
     return retVal;
   }
 
-  newCoupon(coupon: any) {
-    return this.couponCollection.add(coupon);
+  newDeal(deal: any) {
+    return this.dealsCollection.add(deal);
   }
-  updateCurrCoupon(coupon: any) {
-    return this.afs.doc<any>('coupons/' + coupon.id).set(coupon);
+  updateCurrDeal(deal: any) {
+    return this.afs.doc<any>('deals/' + deal.id).set(deal);
   }
 
-  createCoupons(coupon: any) {
+  createDeals(deal: any) {
     return new Promise((resolve) => {
-      if (coupon.id) {
-        this.updateCurrCoupon(coupon)
+      if (deal.id) {
+        this.updateCurrDeal(deal)
           .then(() => {
             resolve();
           })
       } else {
-        this.newCoupon(coupon)
+        this.newDeal(deal)
           .then(() => {
             resolve();
           })
@@ -54,9 +55,9 @@ export class CouponService {
     })
   }
 
-  getCouponsGenerateAutoId() {
+  getDealsGenerateAutoId() {
     return new Promise((resolve) => {
-      let orderNumRef = this.afs.doc<any>('settings/coupons');
+      let orderNumRef = this.afs.doc<any>('settings/deals');
       return orderNumRef.ref.get()
         .then(doc => {
           let val: any = 2100001;
@@ -71,11 +72,11 @@ export class CouponService {
     })
   }
 
-  getAllCoupons() {
+  getAllDeals() {
     return new Promise((resolve) => {
-      this.firestore.collection('coupons').snapshotChanges()
-        .subscribe(coupons => {
-          let contactList = coupons.map(item => {
+      this.firestore.collection('deals').snapshotChanges()
+        .subscribe(deals => {
+          let contactList = deals.map(item => {
             return {
               ...item.payload.doc.data() as {},
               id: item.payload.doc.id
@@ -86,12 +87,12 @@ export class CouponService {
     })
   }
 
-  getCouponsById(couponId: any) {
+  getDealsById(dealId: any) {
     return new Promise((resolve) => {
-      this.firestore.collection('coupons',
-        ref => ref.where('couponId', '==', parseInt(couponId))).snapshotChanges()
-        .subscribe(coupons => {
-          let contactList = coupons.map(item => {
+      this.firestore.collection('deals',
+        ref => ref.where('dealId', '==', parseInt(dealId))).snapshotChanges()
+        .subscribe(deals => {
+          let contactList = deals.map(item => {
             return {
               ...item.payload.doc.data() as {},
               id: item.payload.doc.id

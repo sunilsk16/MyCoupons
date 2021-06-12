@@ -7,10 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { CouponsPageRoutingModule } from './coupons-routing.module';
 
 import { CouponsPage } from './coupons.page';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
   imports: [
     CommonModule,
+    NgxQRCodeModule,
     FormsModule,
     IonicModule,
     CouponsPageRoutingModule

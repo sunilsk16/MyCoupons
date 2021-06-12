@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../../_services/auth.service';
 import { UserService } from '../../_services/user/user.service';
-import { CouponService } from '../../_services/coupons/coupon.service';
+import { DealsService } from '../../_services/deals/deals.service';
 import { Platform, MenuController } from '@ionic/angular';
 import { AlertService } from '../../_services/alert.service';
 import {
@@ -11,15 +11,12 @@ import {
   BarcodeScanner
 } from "@ionic-native/barcode-scanner/ngx";
 
-
-
 @Component({
-  selector: 'app-admincoupons',
-  templateUrl: './admincoupons.page.html',
-  styleUrls: ['./admincoupons.page.scss'],
+  selector: 'app-admin-deals',
+  templateUrl: './admin-deals.page.html',
+  styleUrls: ['./admin-deals.page.scss'],
 })
-export class AdmincouponsPage implements OnInit {
-
+export class AdminDealsPage implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
@@ -30,7 +27,7 @@ export class AdmincouponsPage implements OnInit {
   isEdit: any = false;
   roleData: any;
   loggedInUser: any;
-  couponId: any;
+  dealId: any;
   encodeData: any;
   scannedData: {};
   barcodeScannerOptions: BarcodeScannerOptions;
@@ -56,7 +53,7 @@ export class AdmincouponsPage implements OnInit {
     private router: Router,
     private authService: AuthService,
     private userService: UserService,
-    private couponService: CouponService,
+    private dealsService: DealsService,
     private platform: Platform,
     private alertService: AlertService,
     public menu: MenuController) {
@@ -78,17 +75,17 @@ export class AdmincouponsPage implements OnInit {
       description: ['', Validators.required],
       plans: ['', Validators.required],
       catgory: ['', Validators.required],
-      couponId: ['', Validators.required],
+      dealId: ['', Validators.required],
     });
 
 
-    this.couponService.getCouponsGenerateAutoId()
+    this.dealsService.getDealsGenerateAutoId()
       .then((autoId: any) => {
-        let couponId = 'COUP' + autoId;
-        console.log('couponId ', couponId);
-        this.couponId = couponId;
+        let dealId = 'COUP' + autoId;
+        console.log('dealId ', dealId);
+        this.dealId = dealId;
         this.registerForm.patchValue({
-          couponId: couponId
+          dealId: dealId
         })
       })
 
@@ -106,25 +103,25 @@ export class AdmincouponsPage implements OnInit {
 
   createCoupons(value) {
     // this.createCode();
-    let coupon: any = {};
+    let deal: any = {};
     if (this.isEdit) {
-      coupon.updated_by = this.loggedInUser;
-      coupon.prefix = this.registerForm.value.prefix;
-      coupon.description = this.registerForm.value.description;
-      coupon.plans = this.registerForm.value.plans;
-      coupon.catgory = this.registerForm.value.catgory;
-      coupon.couponId = this.registerForm.value.couponId;
+      deal.updated_by = this.loggedInUser;
+      deal.prefix = this.registerForm.value.prefix;
+      deal.description = this.registerForm.value.description;
+      deal.plans = this.registerForm.value.plans;
+      deal.catgory = this.registerForm.value.catgory;
+      deal.dealId = this.registerForm.value.dealId;
 
       // role.updated_on = moment().format('DD-MM-YYYY hh:mm A');
       // role.timeStamp = moment().format('x');
     } else {
-      coupon = {
+      deal = {
         created_by: this.loggedInUser,
         prefix: this.registerForm.value.prefix,
         description: this.registerForm.value.description,
         plans: this.registerForm.value.plans,
         catgory: this.registerForm.value.catgory,
-        couponId: this.registerForm.value.couponId,
+        dealId: this.registerForm.value.dealId,
         time: this.lunchtime,
         plantype: this.planType,
         // created_on: moment().format('DD-MM-YYYY hh:mm A'),
@@ -132,9 +129,9 @@ export class AdmincouponsPage implements OnInit {
         // timeStamp: moment().format('x')
       }
     }
-    console.log(coupon);
+    console.log(deal);
     // this.helper.showLoading();
-    this.couponService.createCoupons(coupon)
+    this.dealsService.createDeals(deal)
       .then(() => {
         return this.refreshPages();
       })
@@ -146,7 +143,7 @@ export class AdmincouponsPage implements OnInit {
       })
       .catch((err: any) => {
         // this.helper.hideLoading();
-        this.alertService.showToast('Error creating Coupons');
+        this.alertService.showToast('Error creating Deals');
         console.log(err);
       })
   }

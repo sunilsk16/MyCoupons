@@ -24,15 +24,18 @@ import { ShowForDirective } from './_directives/show-for.directive';
 import { ShowForModule } from './partials/show-for/show-for.module';
 import { AuthGuard } from './_guards/auth.guard';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { QrCodeDirective } from './_directives/qr-code.directive';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 
 @NgModule({
-  declarations: [AppComponent,MycouponsComponent,MydealsComponent,BuydealsComponent,MyrewardsComponent,HelpComponent],
+  declarations: [AppComponent,MycouponsComponent,MydealsComponent,BuydealsComponent,MyrewardsComponent,HelpComponent, QrCodeDirective],
   entryComponents: [AppComponent,MycouponsComponent,MydealsComponent,BuydealsComponent],
   imports: [BrowserModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     HttpClientModule,
+    NgxQRCodeModule,
     ShowForModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase),

@@ -99,6 +99,14 @@ const routes: Routes = [
     loadChildren: () => import('./adminpages/role-management/role-list/role-list.module').then( m => m.RoleListPageModule)
     , canActivate: [AuthGuard]
   },
+  {
+    path: 'admin-deals',
+    loadChildren: () => import('./adminpages/admin-deals/admin-deals.module').then( m => m.AdminDealsPageModule)
+  },
+  {
+    path: 'admin-rewards',
+    loadChildren: () => import('./adminpages/admin-rewards/admin-rewards.module').then( m => m.AdminRewardsPageModule)
+  },
 
 ];
 

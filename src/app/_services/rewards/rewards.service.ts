@@ -8,9 +8,10 @@ import firebase from 'firebase/app';
 @Injectable({
   providedIn: 'root'
 })
-export class CouponService {
+export class RewardsService {
+
   ref = firebase.firestore().collection('users');
-  private couponCollection: any;
+  private dealsCollection: any;
   constructor(
     private firestore: AngularFirestore,
     public afs: AngularFirestore,
@@ -18,7 +19,7 @@ export class CouponService {
     private storage: AngularFireStorage
   )
   {
-    this.couponCollection = this.afs.collection<any>('coupons', ref => ref.orderBy('created_on'));
+    this.dealsCollection = this.afs.collection<any>('rewards', ref => ref.orderBy('created_on'));
   }
 
   generateUniqNumber(length?: any) {
@@ -31,22 +32,22 @@ export class CouponService {
     return retVal;
   }
 
-  newCoupon(coupon: any) {
-    return this.couponCollection.add(coupon);
+  newRewards(reward: any) {
+    return this.dealsCollection.add(reward);
   }
-  updateCurrCoupon(coupon: any) {
-    return this.afs.doc<any>('coupons/' + coupon.id).set(coupon);
+  updateCurrRewards(reward: any) {
+    return this.afs.doc<any>('rewards/' + reward.id).set(reward);
   }
 
-  createCoupons(coupon: any) {
+  createRewards(reward: any) {
     return new Promise((resolve) => {
-      if (coupon.id) {
-        this.updateCurrCoupon(coupon)
+      if (reward.id) {
+        this.updateCurrRewards(reward)
           .then(() => {
             resolve();
           })
       } else {
-        this.newCoupon(coupon)
+        this.newRewards(reward)
           .then(() => {
             resolve();
           })
@@ -54,9 +55,9 @@ export class CouponService {
     })
   }
 
-  getCouponsGenerateAutoId() {
+  getRewardsGenerateAutoId() {
     return new Promise((resolve) => {
-      let orderNumRef = this.afs.doc<any>('settings/coupons');
+      let orderNumRef = this.afs.doc<any>('settings/Rewards');
       return orderNumRef.ref.get()
         .then(doc => {
           let val: any = 2100001;
@@ -71,11 +72,11 @@ export class CouponService {
     })
   }
 
-  getAllCoupons() {
+  getAllRewards() {
     return new Promise((resolve) => {
-      this.firestore.collection('coupons').snapshotChanges()
-        .subscribe(coupons => {
-          let contactList = coupons.map(item => {
+      this.firestore.collection('rewards').snapshotChanges()
+        .subscribe(rewards => {
+          let contactList = rewards.map(item => {
             return {
               ...item.payload.doc.data() as {},
               id: item.payload.doc.id
@@ -86,12 +87,12 @@ export class CouponService {
     })
   }
 
-  getCouponsById(couponId: any) {
+  getRewardsById(rewardId: any) {
     return new Promise((resolve) => {
-      this.firestore.collection('coupons',
-        ref => ref.where('couponId', '==', parseInt(couponId))).snapshotChanges()
-        .subscribe(coupons => {
-          let contactList = coupons.map(item => {
+      this.firestore.collection('rewards',
+        ref => ref.where('rewardId', '==', parseInt(rewardId))).snapshotChanges()
+        .subscribe(rewards => {
+          let contactList = rewards.map(item => {
             return {
               ...item.payload.doc.data() as {},
               id: item.payload.doc.id

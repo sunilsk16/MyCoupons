@@ -57,7 +57,7 @@ export class RegisterPage implements OnInit {
           email: authData.user.email,
           firstName: this.registerForm.value.firstName,
           phoneNumber: this.registerForm.value.phoneNumber,
-          roleValue: '1122',
+          roleValue: '1133',
           isActive: true,
           mailVerified: true,
                 })

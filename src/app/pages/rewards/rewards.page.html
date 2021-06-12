@@ -39,22 +39,23 @@
     </ion-list>
 
     <div [ngSwitch]="type">
-      <ion-card  *ngSwitchCase="'available'">
+        <div *ngFor="let reward of rewardsList; let i = index">
+          <ion-card  *ngSwitchCase="'available'">
         <ion-grid>
           <ion-row>
             <ion-col>
-              <h6> PLAN - B </h6>
-                <h4>  Main Course Offer </h4>
+              <h6> {{reward.plans}} </h6>
+                <h4>  {{reward.plantype}} </h4>
             </ion-col>
             <ion-col>
-              <h6> Dinner (7:30 PM to 11:00 PM) </h6>
-              <h3>BUY 1 GET 1</h3>
+              <h6> {{reward.catgory}} ({{reward.time}}) </h6>
+              <h3>{{reward.prefix}}</h3>
             </ion-col>
 
           </ion-row>
           <ion-row>
             <ion-col>
-              Pay for One Main Course and Get One Main Course Of the same or lesser value Of your choice
+            {{reward.description}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -74,6 +75,7 @@
           USE NOW
         </ion-button>
       </ion-card>
+      </div>
       <ion-card  *ngSwitchCase="'used'" style="background:lightgray">
         <ion-grid>
           <ion-row>

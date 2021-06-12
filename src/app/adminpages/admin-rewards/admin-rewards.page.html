@@ -1,7 +1,7 @@
 <ion-app>
   <ion-header translucent>
     <ion-toolbar>
-      <ion-title>Admin Coupons</ion-title>
+      <ion-title>Admin Rewards</ion-title>
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
@@ -15,7 +15,7 @@
 
   <ion-content fullscreen>
 
-    <form [formGroup]="registerForm" (ngSubmit)="createCoupons(registerForm.value)">
+    <form [formGroup]="registerForm" (ngSubmit)="createRewards(registerForm.value)">
       <ion-card>
 
         <ion-card-header>
@@ -30,7 +30,7 @@
               <ion-col align-self-center size-md="10" size-lg="10" size-xs="12">
                 <ion-item>
                   <ion-label position="floating">Coupon ID</ion-label>
-                  <ion-input name="couponId" readonly formControlName="couponId" type="firstName"  placeholder="Prefix" ngModel required></ion-input>
+                  <ion-input name="rewardId" readonly formControlName="rewardId" type="rewardId"  placeholder="rewardId" ngModel required></ion-input>
                 </ion-item>
                   <ion-item>
            <ion-label>Catgory</ion-label>

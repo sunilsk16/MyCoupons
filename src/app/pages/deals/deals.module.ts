@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DealsPageRoutingModule } from './deals-routing.module';
 
 import { DealsPage } from './deals.page';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DealsPageRoutingModule
+    DealsPageRoutingModule,
+    NgxQRCodeModule
   ],
   declarations: [DealsPage]
 })

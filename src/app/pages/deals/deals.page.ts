@@ -3,6 +3,11 @@ import { PopoverController } from '@ionic/angular';
 import { MydealsComponent } from '../../mydeals/mydeals.component';
 import { BuydealsComponent } from '../../buydeals/buydeals.component';
 import { ModalController } from '@ionic/angular';
+import {
+  BarcodeScannerOptions,
+  BarcodeScanner
+} from "@ionic-native/barcode-scanner/ngx";
+import { DealsService } from '../../_services/deals/deals.service';
 
 @Component({
   selector: 'app-deals',
@@ -10,13 +15,31 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./deals.page.scss'],
 })
 export class DealsPage implements OnInit {
-
+dealList:any;
+loggedInUser:any;
+barcodeScannerOptions: BarcodeScannerOptions;
   type: any;
-   constructor(public popoverCtrl: PopoverController,
-    public modalCtrl: ModalController) { }
+  constructor(public popoverCtrl: PopoverController,
+   public modalCtrl: ModalController,
+   private barcodeScanner: BarcodeScanner,
+ private dealsService: DealsService,) {
+   this.barcodeScannerOptions = {
+     showTorchButton: true,
+     showFlipCameraButton: true
+   };
+       if (window.localStorage.getItem('currentUser')) {
+         this.loggedInUser = JSON.parse(window.localStorage.getItem('currentUser'));
+       }
+     }
+
 
    ngOnInit() {
      this.type = 'available';
+     this.dealsService.getAllDeals()
+     .then((res:any) =>{
+       this.dealList = res;
+       console.log('dealList ', res);
+       })
 
 
        }

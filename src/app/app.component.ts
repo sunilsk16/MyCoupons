@@ -53,25 +53,40 @@ export class AppComponent {
           roleValue: "HOME_VIEW"
         },
         {
-          title: "Coupons",
+          title: "Admin-Coupons",
           url: "/admincoupons",
           icon: "ticket",
+          roleValue: "HOME_VIEW"
+        },
+        {
+          title: "Admin-Deals",
+          url: "/admin-deals",
+          icon: "wine",
+          roleValue: "HOME_VIEW"
+        },
+        {
+          title: "Admin-Rewards",
+          url: "/admin-rewards",
+          icon: "gift",
           roleValue: "HOME_VIEW"
         },
         {
           title: "Coupons",
           url: "/coupons",
           icon: "ticket",
+          roleValue: "USER_MANAGEMENT_VIEW"
                 },
         {
           title: "Deals",
           url: "/deals",
-          icon: "wine"
+          icon: "wine",
+          roleValue: "USER_MANAGEMENT_VIEW"
         },
         {
           title: "Rewards",
           url: "/rewards",
-          icon: "gift"
+          icon: "gift",
+            roleValue: "USER_MANAGEMENT_VIEW"
         },
         {
           title: "Reffer & Earn",

@@ -2,25 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdmincouponsPageRoutingModule } from './admincoupons-routing.module';
+import { AdminRewardsPageRoutingModule } from './admin-rewards-routing.module';
 
-import { AdmincouponsPage } from './admincoupons.page';
-import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
-
-
+import { AdminRewardsPage } from './admin-rewards.page';
 
 @NgModule({
   imports: [
     ReactiveFormsModule,
+    NgxQRCodeModule,
     CommonModule,
     FormsModule,
     IonicModule,
-    NgxQRCodeModule,
-    AdmincouponsPageRoutingModule
+    AdminRewardsPageRoutingModule
   ],
-  declarations: [AdmincouponsPage]
+  declarations: [AdminRewardsPage]
 })
-export class AdmincouponsPageModule {}
+export class AdminRewardsPageModule {}
