@@ -59,6 +59,7 @@ export class RegisterPage implements OnInit {
           phoneNumber: this.registerForm.value.phoneNumber,
           roleValue: '1133',
           isActive: true,
+          isPrimeMember:false,
           mailVerified: true,
                 })
                 .then(res => {

@@ -12,43 +12,64 @@
 
 
   <ion-content class="ion-padding">
+    <form [formGroup]="registerForm" (ngSubmit)="updateUser(registerForm.value)">
+      <ion-card>
 
-      <ion-item lines="none">
-        <ion-thumbnail >
-          <img  src="{{profileImageUrl}}" height="100px">
-        </ion-thumbnail>
+        <ion-card-header>
+          <ion-card-subtitle style="font-size: 20px;text-align: left;">
+            <ion-item lines="none">
+              <ion-thumbnail>
+                <img src="{{profileImageUrl}}" height="100px">
+              </ion-thumbnail>
 
-      </ion-item>
+            </ion-item>
+          </ion-card-subtitle>
+          <ion-card-title></ion-card-title>
+        </ion-card-header>
 
-      <ion-item  >
-        <ion-icon name="person-sharp" slot="start"></ion-icon>
-        <ion-label> {{profile ? profile.firstName : "firstName"}}    </ion-label>
-      </ion-item>
+        <ion-card-content>
 
-      <ion-item  class="ion-activated">
-        <ion-icon name="calendar-sharp" slot="start"></ion-icon>
-        <ion-label>{{profile ? profile.birthDate : ""}}</ion-label>
-      </ion-item>
-
-      <ion-item >
-        <ion-icon name="mail-sharp" slot="start"></ion-icon>
-        <ion-label> {{profile ? profile.email : ""}}
-        </ion-label>
-      </ion-item>
-      <ion-item >
-        <ion-icon name="call-sharp" slot="start"></ion-icon>
-        <ion-label> {{profile ? profile.phoneNumber : ""}}
-        </ion-label>
-      </ion-item>
-      <ion-item >
-        <ion-icon name="home-sharp" slot="start"></ion-icon>
-        <ion-label>{{profile ? profile.address : ""}}
-        </ion-label>
-      </ion-item>
+          <ion-grid>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="8" size-lg="12" size-xs="12">
+                <div text-center>
+                </div>
+                <div padding>
 
 
+                  <ion-item>
+                    <ion-label slot="start">First Name</ion-label>
+                    <ion-input formControlName="firstName" type="firstName" placeholder="First Name" required></ion-input>
 
-    <div class="mid">
-      <ion-button class="submit-btn" >Edit Profile</ion-button>
-    </div>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label slot="start">Phone Number</ion-label>
+                    <ion-input formControlName="phoneNumber" type="PhoneNumber" placeholder="Phone Number" required></ion-input>
+
+                  </ion-item>
+                  <ion-item>
+                    <ion-label slot="start">Email ID</ion-label>
+                    <ion-input type="email" formControlName="email" placeholder="your@email.com" readonly ></ion-input>
+
+                  </ion-item>
+                  <ion-item>
+    <ion-label slot="start">Birth Date</ion-label>
+    <ion-datetime  slot="start" displayFormat="MM DD YY" formControlName="birthDate"></ion-datetime>
+  </ion-item>
+                </div>
+              </ion-col>
+            </ion-row>
+
+          </ion-grid>
+
+
+
+        </ion-card-content>
+      </ion-card>
+      <div padding style="margin-top: 20px;text-align: center;">
+        <ion-button type="submit" [disabled]="registerForm.invalid">Update</ion-button>
+      </div>
+
+    </form>
+
   </ion-content>

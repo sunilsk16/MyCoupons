@@ -220,4 +220,19 @@ export class UserService {
     })
   }
 
+  getAdminById(id: any) {
+      return new Promise((resolve) => {
+        var docRef = this.firestore.collection("admins").doc(id);
+
+        docRef.ref.get().then(function(doc) {
+          if (doc.exists) {
+            let res = { ...doc.data()  as {} , id: doc.id }
+            resolve(res)
+          }
+        }).catch(function(error) {
+          resolve(null);
+        });
+      })
+    }
+
 }

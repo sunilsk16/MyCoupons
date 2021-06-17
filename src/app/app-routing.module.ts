@@ -107,6 +107,18 @@ const routes: Routes = [
     path: 'admin-rewards',
     loadChildren: () => import('./adminpages/admin-rewards/admin-rewards.module').then( m => m.AdminRewardsPageModule)
   },
+  {
+    path: 'member-list',
+    loadChildren: () => import('./adminpages/member-list/member-list.module').then( m => m.MemberListPageModule)
+  },
+  {
+    path: 'add-member',
+    loadChildren: () => import('./adminpages/add-member/add-member.module').then( m => m.AddMemberPageModule)
+  },
+  {
+    path: 'a/dashboard',
+    loadChildren: () => import('./adminpages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
 
 ];
 

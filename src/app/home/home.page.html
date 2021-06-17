@@ -35,7 +35,7 @@
       <img src="assets/img/hotel2.jpg"/>
       </ion-card>
       <h2>One membership ,</h2><span> many benefits</span>
-      <p>Your<b>prime membership now </b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
+      <p>Your<b>prime membership now </b> is an open source.</p>
     </ion-slide>
     <ion-slide>
         <h3> ONYX LOUNGE BAR</h3>
@@ -43,7 +43,7 @@
               <img src="assets/img/deni2.jpg"/>
       </ion-card>
       <h2>One membership ,many benefits</h2>
-      <p>Your<b>prime membership now </b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
+      <p>Your<b>prime membership now </b> is an open source SDK</p>
     </ion-slide>
 
       <ion-slide>
@@ -51,12 +51,12 @@
       <ion-card>
         <img src="assets/img/deni4.jpg"/>
       </ion-card>
-      <h2>Ready to Play?</h2>
+      <h2>Ready to Visit</h2>
       <!-- <ion-button fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button> -->
     </ion-slide>
       </ion-slides>
-<ion-card>
-<ion-button expand="block">Join Prime membership</ion-button>
+<ion-card *ngIf="loggedInUser.isPrimeMember== false ">
+<ion-button expand="block" (click)="payNow()">Join Prime membership</ion-button>
   <p>One membership ,Many benefits</p>
 </ion-card>
 

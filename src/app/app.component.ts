@@ -48,8 +48,22 @@ export class AppComponent {
     this.allpages = [
         {
           title: "Home",
-          url: "/dashboard",
+          url: "/a/dashboard",
           icon: "home",
+          roleValue: "HOME_VIEW",
+
+        },
+        {
+          title: "Home",
+          url: "/home",
+          icon: "home",
+        roleValue: "USER_MANAGEMENT_VIEW",
+
+        },
+        {
+          title: "Members",
+          url: "/member-list",
+          icon: "ticket",
           roleValue: "HOME_VIEW"
         },
         {

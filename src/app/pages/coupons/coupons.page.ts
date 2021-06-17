@@ -30,15 +30,24 @@ export class CouponsPage implements OnInit {
    };
        if (window.localStorage.getItem('currentUser')) {
          this.loggedInUser = JSON.parse(window.localStorage.getItem('currentUser'));
+   console.log('logginUser', this.loggedInUser);
        }}
 
+
   ngOnInit() {
+
         this.type = 'available';
+        if(this.loggedInUser.isPrimeMember == true)
+        {
         this.couponService.getAllCoupons()
         .then((res:any) =>{
           this.couponsList = res;
           console.log('couponsList ', res);
           })
+        }
+        else{
+            console.log('no couponsList ');
+        }
     }
     dismiss() {
     this.modalCtrl.dismiss();

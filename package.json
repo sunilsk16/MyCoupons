@@ -38,6 +38,7 @@
     "jquery": "^3.4.1",
     "ngx-qrcode2": "^9.0.0",
     "qrcode": "^1.4.4",
+    "razorpay": "^2.0.6",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "underscore": "^1.13.1",
@@ -64,6 +65,7 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
+    "com.razorpay.cordova": "^1.4.13",
     "cordova-browser": "^6.0.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
@@ -105,11 +107,12 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "com.razorpay.cordova": {}
     },
     "platforms": [
-      "browser",
-      "android"
+      "android",
+      "browser"
     ]
   }
 }

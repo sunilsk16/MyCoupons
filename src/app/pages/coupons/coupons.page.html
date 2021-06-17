@@ -40,6 +40,7 @@
 
     <div [ngSwitch]="type" >
       <div *ngFor="let coupon of couponsList; let i = index">
+        <div *ngIf="coupon.isActive==true">
       <ion-card  *ngSwitchCase="'available'" >
         <ion-grid >
           <ion-row  >
@@ -76,22 +77,25 @@
         </ion-button>
       </ion-card>
       </div>
-      <ion-card  *ngSwitchCase="'used'" style="background:lightgray">
-        <ion-grid>
-          <ion-row>
+      </div>
+      <div *ngFor="let coupon of couponsList; let i = index">
+        <div *ngIf="coupon.isActive==false">
+      <ion-card  *ngSwitchCase="'used'"  style="background:lightgray">
+        <ion-grid >
+          <ion-row  >
             <ion-col>
-              <h6> PLAN - B </h6>
-                <h4>  Main Course Offer </h4>
+              <h6> {{coupon.plans}} </h6>
+                <h4> {{coupon.catgory}} </h4>
             </ion-col>
             <ion-col>
               <h6> Dinner (7:30 PM to 11:00 PM) </h6>
-              <h3>BUY 1 GET 1</h3>
+              <h3>{{coupon.prefix}}</h3>
             </ion-col>
 
           </ion-row>
           <ion-row>
             <ion-col>
-              Pay for One Main Course and Get One Main Course Of the same or lesser value Of your choice
+            {{coupon.description}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -107,10 +111,12 @@
           </ion-row>
 
         </ion-grid>
-        <ion-button style="margin-top: -15px;" expand="block" (click)="couponsView()">
-        View Details
+        <ion-button style="margin-top: -15px;" expand="block"  (click)="couponsView()">
+      View Details
         </ion-button>
       </ion-card>
+      </div>
+      </div>
 
     </div>
   </ion-content>
