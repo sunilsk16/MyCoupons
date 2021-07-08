@@ -71,7 +71,7 @@
           </ion-row>
 
         </ion-grid>
-        <ion-button   style="margin-top: -15px;" expand="block"  (click)="dealsView()">
+        <ion-button   style="margin-top: -15px;" expand="block"  (click)="dealsView(deal.id)">
           BUY NOW
         </ion-button>
       </ion-card>
@@ -107,7 +107,7 @@
           </ion-row>
 
         </ion-grid>
-        <ion-button  style="margin-top: -15px;" expand="block" (click)="buyDealsView()">
+        <ion-button  style="margin-top: -15px;" expand="block" (click)="buyDealsView(deal.id)">
         USE NOW
         </ion-button>
       </ion-card>

@@ -68,19 +68,25 @@ export class AppComponent {
         },
         {
           title: "Admin-Coupons",
-          url: "/admincoupons",
+          url: "/coupons-list",
           icon: "ticket",
           roleValue: "HOME_VIEW"
         },
         {
           title: "Admin-Deals",
-          url: "/admin-deals",
+          url: "/deals-list",
           icon: "wine",
           roleValue: "HOME_VIEW"
         },
         {
           title: "Admin-Rewards",
-          url: "/admin-rewards",
+          url: "/rewards-list",
+          icon: "gift",
+          roleValue: "HOME_VIEW"
+        },
+        {
+          title: "FAQ",
+          url: "/create-faq",
           icon: "gift",
           roleValue: "HOME_VIEW"
         },
@@ -105,32 +111,38 @@ export class AppComponent {
         {
           title: "Reffer & Earn",
           url: "/refer",
-          icon: "people-circle"
+          icon: "people-circle",
+          roleValue: "USER_MANAGEMENT_VIEW"
         },
         {
           title: "History",
           url: "/payments",
-          icon: "card-outline"
+          icon: "card-outline",
+            roleValue: "USER_MANAGEMENT_VIEW"
         },
         {
           title: "Terms & Conditinos",
           url: "/terms",
-          icon: "reader"
+          icon: "reader",
+            roleValue: "USER_MANAGEMENT_VIEW"
         },
         {
           title: "Helps",
           url: "/help",
-          icon: "help-circle"
+          icon: "help-circle",
+            roleValue: "USER_MANAGEMENT_VIEW"
         },
         {
           title: "Contact Us",
           url: "/contact",
-          icon: "open"
+          icon: "open",
+            roleValue: "USER_MANAGEMENT_VIEW"
         },
         {
           title: "About",
           url: "/about",
-          icon: "information-circle"
+          icon: "information-circle",
+            roleValue: "USER_MANAGEMENT_VIEW"
         },
 
         ///Admin Pages side Menu View

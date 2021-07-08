@@ -86,7 +86,24 @@ export class CouponService {
     })
   }
 
-  getCouponsById(couponId: any) {
+
+
+getCouponsById(id: any) {
+    return new Promise((resolve) => {
+      var docRef = this.firestore.collection("coupons").doc(id);
+
+      docRef.ref.get().then(function(doc) {
+        if (doc.exists) {
+          let res = { ...doc.data()  as {} , id: doc.id }
+          resolve(res)
+        }
+      }).catch(function(error) {
+        resolve(null);
+      });
+    })
+  }
+
+  getCouponsBId(couponId: any) {
     return new Promise((resolve) => {
       this.firestore.collection('coupons',
         ref => ref.where('couponId', '==', parseInt(couponId))).snapshotChanges()

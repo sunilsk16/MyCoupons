@@ -1,0 +1,28 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Create FAQ</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Question</ion-label>
+    <ion-input [(ngModel)]="faqData.title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Answer</ion-label>
+    <ion-textarea rows="5" cols="20" placeholder="Enter Answer here..." [(ngModel)]="faqData.content"></ion-textarea>
+  </ion-item>
+  <ion-item lines="none">
+<ion-button (click)="submit()">ADD </ion-button>
+</ion-item>
+
+</ion-content>

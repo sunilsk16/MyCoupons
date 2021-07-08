@@ -13,8 +13,10 @@
     </ion-toolbar>
   </ion-header>
 <ion-content fullscreen class="ion-padding" scroll-y="true" >
+    <ion-card>
   <ion-grid>
-    <ion-row style="margin-top: -10px">
+
+    <ion-row style="margin-top: -10px ;background:smokewhite">
          <ion-col>
            <div>Total Rewards </div>
             <div>  5 Coupons</div>
@@ -27,6 +29,7 @@
        </ion-row>
 
     </ion-grid>
+      </ion-card>
         <ion-card>
           <ion-grid style="text-align: center;">
             <ion-row>
@@ -42,7 +45,7 @@
                 <ion-label >ABCD12345</ion-label> <span><ion-icon  size="small" name="copy-outline"></ion-icon></span>
 
                   <p>  Share your Code with Your friends. and get exciting bonus Coupons </p>
-                    <ion-button >Refer</ion-button>
+
                 </ion-col>
                 </ion-row>
         </ion-grid>
@@ -54,15 +57,16 @@
 
 
   <ion-grid style="text-align: center;">
+
     <ion-row>
       <ion-col>
-      <ion-icon size="large"  name="logo-facebook"></ion-icon>
+      <ion-icon size="large" (click)="shareApi()"  name="logo-facebook"></ion-icon>
       </ion-col>
       <ion-col>
-      <ion-icon size="large" name="logo-instagram"></ion-icon>
+      <ion-icon size="large" (click)="shareApi()" name="logo-instagram"></ion-icon>
       </ion-col>
       <ion-col>
-        <ion-icon size="large" name="logo-whatsapp"></ion-icon>
+        <ion-icon size="large" (click)="shareApi()"   name="logo-whatsapp"></ion-icon>
       </ion-col>
       </ion-row>
       <!-- <ion-row>
@@ -78,7 +82,7 @@
         </ion-row> -->
 </ion-grid>
 
-<ion-button expand="block">Share</ion-button>
+<ion-button expand="block" >Share</ion-button>
 </ion-content>
 
 </ion-app>

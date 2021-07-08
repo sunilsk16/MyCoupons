@@ -119,6 +119,22 @@ const routes: Routes = [
     path: 'a/dashboard',
     loadChildren: () => import('./adminpages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
+  {
+    path: 'coupons-list',
+    loadChildren: () => import('./adminpages/coupons-list/coupons-list.module').then( m => m.CouponsListPageModule)
+  },
+  {
+    path: 'rewards-list',
+    loadChildren: () => import('./adminpages/rewards-list/rewards-list.module').then( m => m.RewardsListPageModule)
+  },
+  {
+    path: 'deals-list',
+    loadChildren: () => import('./adminpages/deals-list/deals-list.module').then( m => m.DealsListPageModule)
+  },
+  {
+    path: 'create-faq',
+    loadChildren: () => import('./adminpages/create-faq/create-faq.module').then( m => m.CreateFaqPageModule)
+  },
 
 ];
 

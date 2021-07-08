@@ -26,6 +26,11 @@ import { AuthGuard } from './_guards/auth.guard';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { QrCodeDirective } from './_directives/qr-code.directive';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
+
 
 
 @NgModule({
@@ -42,13 +47,14 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
     FormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    NgxDatatableModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
   enabled: environment.production,
   // Register the ServiceWorker as soon as the app is stable
   // or after 30 seconds (whichever comes first).
   registrationStrategy: 'registerWhenStable:30000'
 })],
-  providers: [  AuthGuard,BarcodeScanner,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ SocialSharing,AuthGuard,FirebaseDynamicLinks,BarcodeScanner,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

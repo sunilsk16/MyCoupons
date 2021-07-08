@@ -4,17 +4,16 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-        <h5>    Main Course Offer </h5>
+        <h5>   {{rewardsList [0]['plans']}}</h5>
           </ion-col>
           <ion-col>
-        <h5>  BUY 1 GET 1 </h5>
+        <h5> {{rewardsList[0]['prefix']}}</h5>
           </ion-col>
 
         </ion-row>
         <ion-row>
           <ion-col>
-       Pay for One Main Course and Get One Main Course Of the same or lesser value Of your choice.<br/>
-       Higher value items will be charged and lesser value will be complimentry.
+      {{rewardsList[0]['description']}}
 
           </ion-col>
         </ion-row>
@@ -25,12 +24,13 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            Use Code:Coup001
+            Use Code:{{rewardsList[0]['rewardId']}}
 
             T & C Applicable
           </ion-col>
           <ion-col>
-<img src="assets/img/scan.jpg"/>
+            <ngx-qrcode [value]="value" cssClass="aclass">
+            </ngx-qrcode>
           </ion-col>
         </ion-row>
 

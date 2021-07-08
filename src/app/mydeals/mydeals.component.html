@@ -3,22 +3,22 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <h5> Main Course Offer </h5>
+        <h5> {{dealList[0].plans}} </h5>
       </ion-col>
       <ion-col>
-        <h5> BUY 1 GET 1 </h5>
+        <h5> {{dealList[0].prefix}} </h5>
       </ion-col>
 
     </ion-row>
     <ion-row>
       <ion-col>
-        Pay for One Main Course and Get One Main Course Of the same or lesser value Of your choice.<br />
-        Higher value items will be charged and lesser value will be complimentry.
+        {{dealList[0].description}}
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <h6> Expires On:Feb 2,2021 </h6>
+
+        <h6>{{dealList[0].catgory}} ({{dealList[0].time}})</h6>
       </ion-col>
     </ion-row>
     <ion-button expand="block"  (click)="buyNow()">

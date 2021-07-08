@@ -27,20 +27,18 @@
       </ion-segment>
     <ion-list >
       <ion-item lines="none">
-              <ion-select value="all" okText="Okay" cancelText="Dismiss">
-          <ion-select-option value="all">All</ion-select-option>
-            <ion-select-option value="blonde">Starter/Soup Offer</ion-select-option>
-          <ion-select-option value="blonde">Main Course Offer</ion-select-option>
-          <ion-select-option value="black">Dessert/Moctails Offer</ion-select-option>
-          <ion-select-option value="red">Pizza/pasta Offer</ion-select-option>
+              <ion-select value="all" okText="Okay" [(ngModel)]="pvalue" (ionChange)="getValue($event)" cancelText="Dismiss">
+          <ion-select-option value="all" (ionSelect)="findAll()">All</ion-select-option>
+          <ion-select-option *ngFor="let c of defaultCouponsList" [value]="c"> {{c.plans}}
+       </ion-select-option>
         </ion-select>
       </ion-item>
 
     </ion-list>
 
     <div [ngSwitch]="type" >
-      <div *ngFor="let coupon of couponsList; let i = index">
-        <div *ngIf="coupon.isActive==true">
+      <div *ngFor="let coupon of defaultCouponsList ; let i = index">
+        <div *ngIf="coupon.isActive==true ">
       <ion-card  *ngSwitchCase="'available'" >
         <ion-grid >
           <ion-row  >
@@ -72,13 +70,13 @@
           </ion-row>
 
         </ion-grid>
-        <ion-button style="margin-top: -15px;" expand="block"  (click)="couponsView()">
+        <ion-button style="margin-top: -15px;" expand="block"  (click)="couponsView(coupon.id)">
           USE NOW
         </ion-button>
       </ion-card>
       </div>
       </div>
-      <div *ngFor="let coupon of couponsList; let i = index">
+      <div *ngFor="let coupon of defaultCouponsList; let i = index">
         <div *ngIf="coupon.isActive==false">
       <ion-card  *ngSwitchCase="'used'"  style="background:lightgray">
         <ion-grid >
@@ -111,7 +109,7 @@
           </ion-row>
 
         </ion-grid>
-        <ion-button style="margin-top: -15px;" expand="block"  (click)="couponsView()">
+        <ion-button style="margin-top: -15px;" expand="block"  (click)="couponsView(coupon.id)">
       View Details
         </ion-button>
       </ion-card>

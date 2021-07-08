@@ -12,36 +12,21 @@
   </ion-toolbar>
 </ion-header>
 
-  <ion-content class="ion-padding">
-  
-    <ion-grid>
-      <ion-row>
-        <ion-col>User UID</ion-col>
-          <ion-col>Name</ion-col>
-          <ion-col>Permissions</ion-col>
-          <ion-col>Created By</ion-col>
-          <ion-col>Edit</ion-col>
-          <ion-col>Delete</ion-col>
-      </ion-row>
+<ion-content>
+  <div class="ion-padding">
 
-      <ion-row *ngFor="let role of roleList; let i = index">
-        <ion-col>{{ role.roleValue }}</ion-col>
-        <ion-col>{{ role.roleName }}</ion-col>
-        <ion-col>{{ role.permissions.length }}</ion-col>
-        <ion-col>{{ role.created_by ? role.created_by.name : 'Admin' }}</ion-col>
-        <ion-col>{{ role.created_on }}</ion-col>
-        <ion-col>
-          <ion-button  class="btn btn-sm btn-outline-info">
-            Edit
-          </ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button disabled  class="btn btn-sm btn-outline-danger">
-            <!-- <i class="fa fa-refresh fa-spin" *ngIf="isLoading"></i> -->
-            Delete
-          </ion-button>
-        </ion-col>
-      </ion-row>
+    <!-- Theme classes dark, material, bootstrap -->
+    <ngx-datatable
+      class="material"
+      [limit]="8"
+      [rows]="rows"
+      [rowHeight]="50"
+      [columns]="columns"
+      [columnMode]="'force'"
+      [sortType]="'multi'"
+      [headerHeight]="50"
+      [footerHeight]="50">
+    </ngx-datatable>
 
-    </ion-grid>
-  </ion-content>
+  </div>
+</ion-content>

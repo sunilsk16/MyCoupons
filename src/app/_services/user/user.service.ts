@@ -235,4 +235,40 @@ export class UserService {
       })
     }
 
+    addFaq(data: any) {
+  return firebase.firestore().collection('faqList').add(data);
+}
+
+getCouponsById(id: any) {
+    return new Promise((resolve) => {
+      var docRef = this.firestore.collection("admins").doc(id).collection("coupons").doc("id");
+
+      docRef.ref.get().then(function(doc) {
+        if (doc.exists) {
+          let res = { ...doc.data()  as {} , id: doc.id }
+          resolve(res)
+        }
+      }).catch(function(error) {
+        resolve(null);
+      });
+    })
+  }
+
+fethAllUser() {
+  return new Promise((resolve) => {
+    this.firestore.collection('admins').snapshotChanges()
+      .subscribe(users => {
+        let contactList = users.map(item => {
+          return {
+            ...item.payload.doc.data() as {},
+            id: item.payload.doc.id
+          };
+        });
+        resolve(contactList);
+      })
+  })
+}
+
+
+
 }

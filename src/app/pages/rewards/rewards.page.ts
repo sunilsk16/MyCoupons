@@ -41,9 +41,10 @@ export class RewardsPage implements OnInit {
        })
      }
 
-     async couponsView() {
+     async couponsView(rewardId: any) {
          const modal = await this.modalCtrl.create({
            component: MyrewardsComponent,
+         componentProps: { 'data': rewardId },
            animated: true,
            mode: 'ios',
            backdropDismiss: false,

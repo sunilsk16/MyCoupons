@@ -1,7 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController} from '@ionic/angular';
-import { AlertService } from '../_services/alert.service';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import {
+  BarcodeScannerOptions,
+  BarcodeScanner
+} from "@ionic-native/barcode-scanner/ngx";
+import { Router } from '@angular/router';
+import { AuthService } from '../_services/auth.service';
+import { UserService } from '../_services/user/user.service';
+import { CouponService } from '../_services/coupons/coupon.service';
 import { Platform , MenuController } from '@ionic/angular';
+import { AlertService } from '../_services/alert.service';
+import { DealsService } from '../_services/deals/deals.service';
+import * as _ from 'underscore';
 declare var RazorpayCheckout: any;
 
 
@@ -18,19 +29,42 @@ isLoading: any = false;
 currency: string = 'INR';
 razor_key = 'rzp_test_7HIzld6TnnDX0r';
 paymentAmount: number = 5000;
+dealList: any;
+defaultDealList: any;
+private value: Array<any> = [];
+cId: any;
+
+@Input() data: any ;
 
 
 
   constructor(public modalCtrl: ModalController,
     private alertService:AlertService,
     private platform: Platform,
-  public menu: MenuController) {
+  public menu: MenuController,
+private dealsService:DealsService) {
     if (window.localStorage.getItem('currentUser')) {
       this.loggedInUser = JSON.parse(window.localStorage.getItem('currentUser'));
+
+      // this.dealList = this.loggedInUser.dealList;
+      // console.log('defaultDealList', this.dealList);
+
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dealsService.getAllDeals()
+    .then((res:any) =>{
+      this.dealList = _.filter(res,{'id': this.data})
+      console.log('dealListmmmm ', res);
+      })
+
+    console.log('data ', this.data)
+  this.defaultDealList = _.filter(this.dealList,{'id': this.data})
+console.log('dealList ', this.defaultDealList);
+this.value=[this.defaultDealList[0].id,this.defaultDealList[0].dealId,this.defaultDealList[0].isActive];
+
+  }
 
   dismiss() {
     this.modalCtrl.dismiss();

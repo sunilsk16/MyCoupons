@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AlertService } from '../_services/alert.service';
 import { UserService } from '../_services/user/user.service';
+import { CouponService } from '../_services/coupons/coupon.service';
 declare var RazorpayCheckout: any;
 
 
@@ -17,6 +18,8 @@ export class HomePage {
   isLoading: any= false;
   userData: any;
   loggedInUser: any;
+  defaultBookingList: any = [];
+  couponsList:any;
 
   slideOptsOne = {
  initialSlide: 0,
@@ -26,7 +29,9 @@ export class HomePage {
 
   constructor(public menu: MenuController,
     private alertService:AlertService,
-private userService: UserService) {
+private userService: UserService,
+private couponService: CouponService
+) {
   if (window.localStorage.getItem('currentUser')) {
     this.loggedInUser = JSON.parse(window.localStorage.getItem('currentUser'));
   }
@@ -37,6 +42,16 @@ private userService: UserService) {
     // enable the root left menu when leaving the tutorial page
     this.menu.swipeGesture(false);
   }
+
+    ngOnInit() {
+      this.couponService.getAllCoupons()
+      .then((res:any) =>{
+        this.couponsList = res;
+         this.defaultBookingList = this.couponsList;
+        console.log('couponsList ', res);
+        })
+      }
+
   payNow() {
      let self = this;
       var options = {
@@ -45,14 +60,14 @@ private userService: UserService) {
         currency: this.currency, // your 3 letter currency code
         key: this.razor_key, // your Key Id from Razorpay dashboard
         amount: this.paymentAmount, // Payment amount in smallest denomiation e.g. cents for USD
-        name: 'Deni',
+        name: 'Denisson',
         prefill: {
           email: 'deni@yopmail.com',
-          contact: '9621323231',
-          name: 'Deni'
+          contact: '8095415688',
+          name: 'sunil'
         },
         theme: {
-          color: '#F37254'
+          color: 'Blue'
         },
         modal: {
           ondismiss: function () {
@@ -77,11 +92,11 @@ private userService: UserService) {
 
 
       submit() {
-        this.isLoading = true;
-
+          this.isLoading = true;
         let data = {
           ...this.loggedInUser,
           isPrimeMember: true,
+          couponsList:this.defaultBookingList ,
           status: 'confirmed',
         }
         console.log('before updateGroup ', data);

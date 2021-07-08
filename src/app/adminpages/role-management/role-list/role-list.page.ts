@@ -13,17 +13,24 @@ export class RoleListPage implements OnInit {
     public roleList = [];
     title = 'angulardatatables';
     isLoading: any;
-
+ public columns: any;
+  public rows: any;
   constructor(private userService: UserService,) { }
 
   ngOnInit() {
+    this.columns = [
+     { name: 'RoleValue' },
+     { name: 'RoleName' },
+     { name: 'Permissions' }
+   ];
 
-  this.userService.fethAllRoles()
-  .then((res:any) =>{
-    this.roleList = res;
+   this.userService.fethAllRoles()
+   .then((res:any) =>{
     console.log('role ', res);
-    })
-  }
+      this.rows = res;
+     })
+ }
+
   async open(row) {
 		console.log(row);
 	}

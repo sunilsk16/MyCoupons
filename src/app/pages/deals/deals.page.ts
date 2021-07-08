@@ -15,8 +15,10 @@ import { DealsService } from '../../_services/deals/deals.service';
   styleUrls: ['./deals.page.scss'],
 })
 export class DealsPage implements OnInit {
-dealList:any;
-loggedInUser:any;
+dealList: any;
+loggedInUser: any;
+defaultCouponsList: any;
+pvalue: any;
 barcodeScannerOptions: BarcodeScannerOptions;
   type: any;
   constructor(public popoverCtrl: PopoverController,
@@ -69,9 +71,10 @@ barcodeScannerOptions: BarcodeScannerOptions;
    //      const { role } = await popover.onDidDismiss();
    // }
 
-   async dealsView() {
+   async dealsView(dealId: any) {
        const modal = await this.modalCtrl.create({
          component: MydealsComponent,
+         componentProps: { 'data': dealId },
          animated: true,
          mode: 'ios',
          backdropDismiss: false,
@@ -81,9 +84,10 @@ barcodeScannerOptions: BarcodeScannerOptions;
        return await modal.present();
      }
 
-     async buyDealsView() {
+     async buyDealsView(dealId: any) {
          const modal = await this.modalCtrl.create({
            component: BuydealsComponent,
+            componentProps: { 'data': dealId },
            animated: true,
            mode: 'ios',
            backdropDismiss: false,
@@ -91,6 +95,14 @@ barcodeScannerOptions: BarcodeScannerOptions;
          })
 
          return await modal.present();
+       }
+
+       getValue(event) {
+         if(event && event.target) {
+           this.defaultCouponsList = this.defaultCouponsList.filter(x => x.plans == event.target.value.plans)
+           console.log('value',this.pvalue);
+
+         }
        }
 
 
